@@ -1,0 +1,21 @@
+package com.rideflow.demo.domain.enums;
+
+public enum AuditActionType {
+    LOGIN,
+    LOGOUT,
+    REGISTER,
+    SCOOTER_CREATE,
+    SCOOTER_UPDATE,
+    SCOOTER_STATUS_CHANGE,
+    SCOOTER_DELETE,
+    RENTAL_UNLOCK,
+    RENTAL_START,
+    RENTAL_CANCEL,
+    RENTAL_END,
+    RENTAL_FORCE_END,
+    PAYMENT_INITIATED,
+    PAYMENT_SUCCEEDED,
+    PAYMENT_FAILED,
+    PAYMENT_REFUNDED,
+    USER_STATUS_CHANGE
+}
