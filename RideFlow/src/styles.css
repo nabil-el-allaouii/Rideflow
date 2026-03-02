@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
+@import "mapbox-gl/dist/mapbox-gl.css";
+@import "tailwindcss";
+
+:root {
+  --rf-surface: #f3f5f4;
+  --rf-ink: #0f1f2e;
+  --rf-muted: #6b7e8e;
+  --rf-primary: #2ec4ab;
+  --rf-primary-strong: #20b39a;
+  --rf-border: #d6dddf;
+  --rf-danger: #c43838;
+  --rf-font-title: "Space Grotesk", system-ui, sans-serif;
+  --rf-font-text: Manrope, "Space Grotesk", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--rf-font-text);
+  color: var(--rf-ink);
+  background: var(--rf-surface);
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  font: inherit;
+}
