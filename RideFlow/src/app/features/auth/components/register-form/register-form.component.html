@@ -1,0 +1,72 @@
+<section class="login-form-shell">
+  <header>
+    <h2>Create an account</h2>
+    <p>Get started with your first ride</p>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <app-text-field
+      label="Full Name"
+      type="text"
+      autocomplete="name"
+      placeholder="John Doe"
+      [control]="form.controls.fullName"
+      [errorMessage]="fullNameError"
+      icon="user"
+    />
+
+    <app-text-field
+      label="Email"
+      type="email"
+      autocomplete="email"
+      placeholder="you@example.com"
+      [control]="form.controls.email"
+      [errorMessage]="emailError"
+      icon="email"
+    />
+
+    <app-text-field
+      label="Phone Number"
+      type="text"
+      autocomplete="tel"
+      placeholder="+212 6 00 00 00 00"
+      [control]="form.controls.phoneNumber"
+      [errorMessage]="phoneNumberError"
+      icon="user"
+    />
+
+    <app-text-field
+      label="Password"
+      type="password"
+      autocomplete="new-password"
+      placeholder="Create a password"
+      [control]="form.controls.password"
+      [errorMessage]="passwordError"
+      ariaLabel="Password"
+      icon="lock"
+    />
+
+    @if (error) {
+      <p class="form-error">{{ error }}</p>
+    }
+
+    <button class="submit-button" type="submit" [disabled]="loading">
+      @if (loading) {
+        <span class="submit-label">Creating account...</span>
+      } @else {
+        <span class="submit-label">Create Account</span>
+        <span class="submit-arrow" aria-hidden="true">
+          <svg class="submit-icon" viewBox="0 0 24 24">
+            <path d="M6 12h12" />
+            <path d="m13 7 5 5-5 5" />
+          </svg>
+        </span>
+      }
+    </button>
+
+    <p class="sign-up">
+      Already have an account?
+      <a class="inline-link" routerLink="/auth/login">Sign in</a>
+    </p>
+  </form>
+</section>
