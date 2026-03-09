@@ -1,0 +1,38 @@
+.login-page {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(340px, 1fr) minmax(500px, 1fr);
+}
+
+.brand-column {
+  min-height: 100dvh;
+}
+
+.form-column {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: clamp(1.4rem, 2.5vw, 2.8rem);
+  background: linear-gradient(160deg, #f6f8f8 0%, #edf1f1 100%);
+}
+
+app-login-form {
+  width: min(34rem, 92%);
+  justify-self: center;
+}
+
+@media (max-width: 980px) {
+  .login-page {
+    grid-template-columns: 1fr;
+    grid-template-rows: 36dvh 1fr;
+  }
+
+  .brand-column {
+    min-height: 0;
+  }
+
+  .form-column {
+    align-content: start;
+    padding-top: 2.2rem;
+  }
+}

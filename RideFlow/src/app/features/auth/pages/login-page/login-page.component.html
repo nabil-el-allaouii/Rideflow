@@ -1,0 +1,13 @@
+<main class="login-page">
+  <div class="brand-column">
+    <app-brand-panel />
+  </div>
+
+  <section class="form-column">
+    <app-login-form
+      [loading]="(isLoading$ | async) ?? false"
+      [error]="error$ | async"
+      (loginSubmit)="onLoginSubmit($event)"
+    />
+  </section>
+</main>
