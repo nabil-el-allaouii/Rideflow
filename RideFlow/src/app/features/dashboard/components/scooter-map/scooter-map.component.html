@@ -1,0 +1,54 @@
+<section class="map-card">
+  <header class="map-header">
+    <div>
+      <h3>Available Scooters Map</h3>
+      <p>Live nearby availability (Mapbox)</p>
+    </div>
+    <span class="map-count">{{ markers.length }} available</span>
+  </header>
+
+  <div class="map-canvas" role="img" aria-label="Map with available scooters in the area">
+    @if (mapTokenMissing) {
+      <div class="map-fallback">
+        <p>Mapbox token is missing.</p>
+        <small>Set `MAPBOX_ACCESS_TOKEN_VALUE` in `src/app/core/config/mapbox.config.ts`.</small>
+      </div>
+    } @else {
+      <mgl-map
+        class="mapbox-canvas"
+        [style]="mapStyle"
+        [center]="center"
+        [zoom]="[13]"
+        [fitBounds]="fitBounds"
+        [fitBoundsOptions]="fitBoundsOptions"
+      >
+        <mgl-control mglNavigation [showCompass]="false"></mgl-control>
+
+        @for (marker of markers; track marker.code) {
+          <mgl-marker [lngLat]="[marker.longitude, marker.latitude]">
+            <button type="button" class="rf-map-marker" [attr.aria-label]="marker.name + ' ' + marker.code">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="6" cy="17" r="2.1" />
+                <circle cx="17.5" cy="17" r="2.1" />
+                <path d="M8.2 17H12l3.8-6.2h-4.3l-1.4-3.2H8.3" />
+                <path d="M12 10.8 9.6 13.2" />
+              </svg>
+            </button>
+            <mgl-popup [closeButton]="false" [offset]="18">
+              <div class="popup-content">
+                <strong>{{ marker.name }}</strong>
+                <small>{{ marker.code }} - {{ marker.distanceLabel }} - {{ marker.battery }}%</small>
+                <small>{{ marker.area }}</small>
+              </div>
+            </mgl-popup>
+          </mgl-marker>
+        }
+      </mgl-map>
+    }
+  </div>
+
+  <footer class="map-footer">
+    <span class="legend-item"><span class="legend-dot"></span>Available scooter</span>
+    <span class="legend-note">Pins use simulated backend coordinates.</span>
+  </footer>
+</section>

@@ -1,0 +1,158 @@
+.map-card {
+  border: 1px solid #d8dfdf;
+  border-radius: 14px;
+  background: #f9fbfb;
+  box-shadow: 0 6px 20px rgba(16, 31, 46, 0.06);
+  padding: 0.9rem;
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.map-header h3 {
+  margin: 0;
+  font-family: var(--rf-font-title);
+  font-size: 1.12rem;
+  color: #0f1f2e;
+}
+
+.map-header p {
+  margin: 0.2rem 0 0;
+  font-size: 0.86rem;
+  color: #627788;
+}
+
+.map-count {
+  min-height: 30px;
+  border-radius: 999px;
+  padding: 0 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  background: #d7e7e3;
+  color: #1da384;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.map-canvas {
+  margin-top: 0.8rem;
+  height: 290px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #d1dbdb;
+}
+
+.mapbox-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.map-fallback {
+  height: 100%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 1rem;
+  background: linear-gradient(130deg, #e7f2ef, #e1edeb 42%, #e9f4f2 100%);
+}
+
+.map-fallback p {
+  margin: 0;
+  font-family: var(--rf-font-title);
+  font-size: 1.04rem;
+  color: #152634;
+}
+
+.map-fallback small {
+  margin-top: 0.4rem;
+  color: #5f7483;
+  font-size: 0.82rem;
+}
+
+.rf-map-marker {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 2px solid #d8f7f0;
+  background: linear-gradient(135deg, #1fb197, #33c7ae);
+  box-shadow: 0 0 0 6px rgba(32, 179, 154, 0.2);
+  cursor: pointer;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  line-height: 0;
+}
+
+.rf-map-marker svg {
+  width: 18px;
+  height: 18px;
+  overflow: visible;
+  fill: none;
+  stroke: #f2fffc;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.popup-content {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.popup-content strong {
+  font-size: 0.82rem;
+  color: #162732;
+}
+
+.popup-content small {
+  font-size: 0.74rem;
+  color: #4e6475;
+}
+
+.map-footer {
+  margin-top: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #2a3d4e;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.legend-dot {
+  width: 0.68rem;
+  height: 0.68rem;
+  border-radius: 999px;
+  background: #20b39a;
+}
+
+.legend-note {
+  color: #6a7f8f;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 980px) {
+  .map-canvas {
+    height: 260px;
+  }
+
+  .map-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
