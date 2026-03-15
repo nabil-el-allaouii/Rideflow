@@ -1,0 +1,52 @@
+<article class="scooter-card">
+  <header class="scooter-header">
+    <div class="scooter-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <circle cx="6" cy="17" r="2.1" />
+        <circle cx="17.5" cy="17" r="2.1" />
+        <path d="M8.2 17H12l3.8-6.2h-4.3l-1.4-3.2H8.3" />
+        <path d="M12 10.8 9.6 13.2" />
+      </svg>
+    </div>
+
+    <span
+      class="status-pill"
+      [class.status-low]="scooter.status === 'low-battery'"
+      [class.status-available]="scooter.status === 'available'"
+    >
+      <span class="status-dot" aria-hidden="true"></span>
+      @if (scooter.status === 'available') {
+        Available
+      } @else {
+        Low Battery
+      }
+    </span>
+  </header>
+
+  <h4>{{ scooter.name }}</h4>
+  <p class="scooter-code">{{ scooter.code }}</p>
+
+  <div class="scooter-meta">
+    <p>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4" y="8" width="14" height="8" rx="2" />
+        <path d="M18 10h2.5v4H18" />
+      </svg>
+      {{ scooter.battery }}%
+    </p>
+    <p>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 20s6-5.7 6-10.1A6 6 0 1 0 6 9.9C6 14.3 12 20 12 20Z" />
+        <circle cx="12" cy="10" r="1.9" />
+      </svg>
+      {{ scooter.distanceLabel }}
+    </p>
+  </div>
+
+  <button type="button" class="unlock-button">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M11.4 2.6a1 1 0 0 1 1.8.77L11.2 9h6.1a1 1 0 0 1 .7 1.72l-10 10A1 1 0 0 1 6.2 20l2.4-6H3.8a1 1 0 0 1-.77-1.64l8.4-9.8Z" />
+    </svg>
+    <span>Unlock &amp; Ride</span>
+  </button>
+</article>

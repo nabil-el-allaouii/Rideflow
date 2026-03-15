@@ -1,0 +1,155 @@
+.browse-scooter-card {
+  border: 1px solid #d8dfdf;
+  border-radius: 14px;
+  background: #f9fbfb;
+  box-shadow: 0 6px 20px rgba(16, 31, 46, 0.06);
+  padding: 0.85rem 0.9rem 0.95rem;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scooter-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: #dfeceb;
+  color: #20b69d;
+  display: inline-grid;
+  place-items: center;
+}
+
+.scooter-icon svg {
+  width: 1.22rem;
+  height: 1.22rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.status-pill {
+  min-height: 26px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0 0.7rem;
+  font-size: 0.79rem;
+  font-weight: 600;
+  color: #22a88e;
+  background: #deefea;
+}
+
+.status-low {
+  color: #d89214;
+  background: #f7ecda;
+}
+
+.status-in-use {
+  color: #317dd8;
+  background: #deebfa;
+}
+
+.status-maintenance {
+  color: #db4242;
+  background: #f6e1e1;
+}
+
+.status-dot {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+h4 {
+  margin: 0.82rem 0 0;
+  font-family: var(--rf-font-title);
+  font-size: 1.01rem;
+  color: #0f1f2e;
+  line-height: 1.18;
+}
+
+.code-speed {
+  margin: 0.1rem 0 0;
+  color: #5f7383;
+  font-size: 0.88rem;
+}
+
+.meta-row {
+  margin-top: 0.72rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.meta-row p {
+  margin: 0;
+  color: #5f7383;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.meta-row svg {
+  width: 0.88rem;
+  height: 0.88rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.price {
+  margin: 0.65rem 0 0;
+  color: #1faa90;
+  font-family: var(--rf-font-title);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.location {
+  margin: 0.55rem 0 0;
+  color: #617687;
+  font-size: 0.87rem;
+  min-height: 1.2rem;
+}
+
+.unlock-button {
+  margin-top: 0.78rem;
+  width: 100%;
+  min-height: 40px;
+  border: 0;
+  border-radius: 11px;
+  background: linear-gradient(100deg, #22b294 0%, #32c7ae 100%);
+  color: #f4fffd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.48rem;
+  font-family: var(--rf-font-title);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 18px rgba(32, 179, 154, 0.2);
+}
+
+.unlock-button:disabled {
+  cursor: not-allowed;
+  background: linear-gradient(100deg, #9eb8b2 0%, #a9c7c0 100%);
+  box-shadow: none;
+}
+
+.unlock-button svg {
+  width: 0.82rem;
+  height: 0.82rem;
+  fill: currentColor;
+}
