@@ -1,0 +1,200 @@
+﻿<main class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="/assets/logo.jpg" alt="RideFlow logo" />
+      </div>
+      <h1><span class="brand-light">Ride</span><span class="brand-accent">Flow</span></h1>
+    </div>
+
+    <div class="menu-wrap">
+      <p class="menu-title">MENU</p>
+      <nav class="menu-list" aria-label="Primary menu">
+        @for (item of mainMenuItems; track item.label) {
+          <button type="button" class="menu-item" [class.menu-item-active]="item.active" (click)="onMainMenuClick(item)">
+            <span class="menu-icon" aria-hidden="true">
+              @switch (item.icon) {
+                @case ('dashboard') {
+                  <svg class="menu-icon-grid" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="currentColor" /></svg>
+                }
+                @case ('scooter') {
+                  <svg class="menu-icon-scooter" viewBox="0 0 50 50"><path d="M35 9 A 1.0001 1.0001 0 0 0 34 10C34 10.185417 34.010494 10.176523 34.021484 10.269531C34.032484 10.362541 34.047479 10.480684 34.068359 10.628906C34.110129 10.92535 34.17252 11.338705 34.259766 11.857422C34.415602 12.783946 34.663504 14.095763 34.990234 15.640625L24.220703 28.207031L17.958984 15.681641 A 1.0001 1.0001 0 0 0 17.818359 15.402344L16.123047 12.009766C16.182204 12.007254 16.241501 12 16.300781 12C18.900781 12 20 11.299609 20 10.599609C20 9.9996094 19.499219 9.9996094 18.699219 10.099609L12.300781 10.099609C11.200781 10.099609 11 10.6 11 11.5C11 13.792963 12.355328 13.050886 14.105469 12.449219L15.880859 16L13.552734 20.658203C12.446943 20.237342 11.249801 20 10 20C4.4886661 20 0 24.488666 0 30C0 35.511334 4.4886661 40 10 40C15.174135 40 19.447699 36.044472 19.951172 31L23.992188 31 A 1.0001163 1.0001163 0 0 0 24 31 A 1.0001 1.0001 0 0 0 24.015625 31 A 1.0001163 1.0001163 0 0 0 24.099609 30.994141 A 1.0001 1.0001 0 0 0 24.191406 30.982422 A 1.0001163 1.0001163 0 0 0 24.199219 30.980469 A 1.0001 1.0001 0 0 0 24.289062 30.957031 A 1.0001163 1.0001163 0 0 0 24.294922 30.955078 A 1.0001 1.0001 0 0 0 24.382812 30.923828 A 1.0001163 1.0001163 0 0 0 24.388672 30.921875 A 1.0001 1.0001 0 0 0 24.472656 30.880859 A 1.0001163 1.0001163 0 0 0 24.478516 30.876953 A 1.0001 1.0001 0 0 0 24.558594 30.830078 A 1.0001163 1.0001163 0 0 0 24.560547 30.828125 A 1.0001163 1.0001163 0 0 0 24.564453 30.826172 A 1.0001 1.0001 0 0 0 24.638672 30.769531 A 1.0001163 1.0001163 0 0 0 24.644531 30.765625 A 1.0001 1.0001 0 0 0 24.669922 30.740234 A 1.0001163 1.0001163 0 0 0 24.716797 30.697266 A 1.0001 1.0001 0 0 0 24.742188 30.669922 A 1.0001163 1.0001163 0 0 0 24.759766 30.650391L35.539062 18.074219C35.73611 18.916936 35.958114 19.811381 36.201172 20.755859C32.568222 22.256057 30 25.83388 30 30C30 35.511003 34.488997 40 40 40C45.511003 40 50 35.511003 50 30C50 24.488997 45.511003 20 40 20C39.356537 20 38.72922 20.066717 38.119141 20.183594C37.703188 18.562099 37.333857 17.035071 37.052734 15.738281C36.668675 13.966651 36.40168 12.531708 36.232422 11.525391C36.194545 11.300193 36.178808 11.181048 36.150391 11L37.976562 11C39.026137 11.02538 39.909543 11.079931 40.330078 11.289062C40.750614 11.498197 41 11.714667 41 13 A 1.0001 1.0001 0 1 0 43 13C43 11.285333 42.283168 10.026413 41.220703 9.4980469C40.158239 8.9696804 39.041863 9.0246234 38.023438 9 A 1.0001 1.0001 0 0 0 38 9L35 9 z" /></svg>
+                }
+                @case ('history') {
+                  <svg viewBox="0 0 24 24"><path d="M17 3.33782C15.5291 2.48697 13.8214 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 10.5778 21.7031 9.22492 21.1679 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="0.5 3.5" /><path d="M22 12C22 10.1786 21.513 8.47087 20.6622 7M12 2C13.8214 2 15.5291 2.48697 17 3.33782" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><path d="M12 9V13H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                }
+                @case ('profile') {
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4" /><path d="M5 19.5c1.3-3 3.8-4.8 7-4.8s5.7 1.8 7 4.8" /></svg>
+                }
+              }
+            </span>
+            <span>{{ item.label }}</span>
+          </button>
+        }
+      </nav>
+    </div>
+
+    <nav class="menu-list menu-list-footer" aria-label="Secondary menu">
+      @for (item of footerMenuItems; track item.label) {
+        <button type="button" class="menu-item" (click)="onFooterMenuClick(item)">
+          <span class="menu-icon" aria-hidden="true">
+            @switch (item.icon) {
+              @case ('admin') {
+                <svg viewBox="0 0 24 24"><path d="m12 3 1.4 1.5a7.4 7.4 0 0 1 1.8.8l2-.7 1.8 3.2-1.5 1.4a8 8 0 0 1 0 2.2l1.5 1.4-1.8 3.2-2-.7a7.4 7.4 0 0 1-1.8.8L12 21l-3-1.5a7.4 7.4 0 0 1-1.8-.8l-2 .7-1.8-3.2 1.5-1.4a8 8 0 0 1 0-2.2L3.4 7.8l1.8-3.2 2 .7c.57-.33 1.17-.6 1.8-.8L12 3Z" /><circle cx="12" cy="12" r="2.5" /></svg>
+              }
+              @case ('logout') {
+                <svg viewBox="0 0 24 24"><path d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4" /><path d="M13 16 18 12 13 8" /><path d="M9 12h9" /></svg>
+              }
+            }
+          </span>
+          <span>{{ item.label }}</span>
+        </button>
+      }
+    </nav>
+  </aside>
+
+  <section class="dashboard-main">
+    <header class="topbar">
+      <div></div>
+      <button type="button" class="avatar">{{ initials() }}</button>
+    </header>
+
+    <div class="dashboard-content">
+      <section class="hero">
+        <h2>Browse Scooters</h2>
+        <p>Find, reserve, and start a ride from the map near you.</p>
+      </section>
+
+      <section class="payment-strip">
+        <div class="payment-method-field">
+          <span>Preferred payment method</span>
+          <strong>{{ preferredPaymentMethodLabel() }}</strong>
+        </div>
+        <p>
+          @if (paymentMethodConfigured()) {
+            RideFlow will use this method for the unlock fee and the final ride charge.
+          } @else {
+            Configure a payment method in your profile before unlocking a scooter.
+          }
+        </p>
+      </section>
+
+      @if (activeRental()) {
+        <section class="ride-panel" [class.ride-panel-pending]="activeRental()!.status === 'PENDING'">
+          <div>
+            <p class="ride-label">Current Ride Status</p>
+            <h3>{{ activeRental()!.scooterModel }} · {{ activeRental()!.scooterCode }}</h3>
+            @if (activeRental()!.status === 'PENDING') {
+              <p class="ride-copy">Reservation active. Start your ride within 5 minutes before it expires.</p>
+            } @else {
+              <p class="ride-copy">Ride is in progress. End it when you reach your destination.</p>
+            }
+          </div>
+
+          <div class="ride-meta">
+            <div class="ride-timer-block">
+              <span class="ride-meta-label">{{ activeRental()!.status === 'PENDING' ? 'Starts in' : 'Elapsed' }}</span>
+              <strong>{{ activeRental()!.status === 'PENDING' ? reservationTimerLabel() : rideTimerLabel() }}</strong>
+            </div>
+
+            @if (activeRental()!.status === 'PENDING') {
+              <div class="ride-action-group">
+                <button type="button" class="ride-action" [disabled]="rentalMutationInProgress() || reservationSecondsRemaining() === 0" (click)="startRide()">
+                  {{ rentalMutationInProgress() ? 'Working...' : 'Start Ride' }}
+                </button>
+                <button type="button" class="ride-action ride-action-secondary" [disabled]="rentalMutationInProgress()" (click)="cancelRide()">
+                  {{ rentalMutationInProgress() ? 'Working...' : 'Cancel Ride' }}
+                </button>
+              </div>
+            } @else {
+              <button type="button" class="ride-action ride-action-danger" [disabled]="rentalMutationInProgress()" (click)="endRide()">
+                {{ rentalMutationInProgress() ? 'Ending...' : 'End Ride' }}
+              </button>
+            }
+          </div>
+        </section>
+      }
+
+      @if (paymentInProgress()) {
+        <p class="page-message">Processing {{ paymentContext() === 'final' ? 'final payment' : 'unlock payment' }}...</p>
+      }
+
+      @if (paymentError()) {
+        <div class="payment-status payment-status-failed">
+          <div>
+            <p class="payment-status-label">Payment Failed</p>
+            <strong>{{ paymentError() }}</strong>
+          </div>
+          @if (paymentContext() === 'final' && lastFailedFinalRentalId()) {
+            <button type="button" class="ride-action ride-action-danger" [disabled]="paymentInProgress() || !paymentMethodConfigured()" (click)="retryFinalPayment()">
+              Retry Final Payment
+            </button>
+          }
+        </div>
+      }
+
+      @if (lastProcessedPayment()) {
+        <div class="payment-status" [class.payment-status-failed]="lastProcessedPayment()!.status !== 'SUCCEEDED'">
+          <div>
+            <p class="payment-status-label">{{ lastProcessedPayment()!.type === 'FINAL_PAYMENT' ? 'Final Payment' : 'Unlock Payment' }}</p>
+            <strong>{{ lastProcessedPayment()!.status === 'SUCCEEDED' ? 'Payment succeeded' : lastProcessedPayment()!.status }}</strong>
+            <span>
+              {{ lastProcessedPayment()!.amount.toFixed(2) }} · {{ lastProcessedPayment()!.paymentMethod.replace('_', ' ').toLowerCase() }}
+            </span>
+          </div>
+          <span class="payment-reference">{{ lastProcessedPayment()!.transactionReference }}</span>
+        </div>
+      }
+
+      <form class="search-row" aria-label="Search scooters" [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.3-3.3" /></svg>
+          <input type="text" placeholder="Search code, model, address..." formControlName="query" />
+        </div>
+
+        <label class="status-filter compact-filter">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6.3 7.2v5.6l-3.4 1.8v-7.4L4 5Z" /></svg>
+          <input type="number" min="15" max="100" formControlName="minBattery" />
+          <span>Min battery</span>
+        </label>
+
+        <label class="status-filter compact-filter">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /><path d="M12 8v4l2.8 2.4" /></svg>
+          <input type="number" min="1" max="20" step="0.5" formControlName="radiusKm" />
+          <span>Radius km</span>
+        </label>
+
+        <div class="filter-actions">
+          <button type="submit" class="status-filter action-filter">Apply</button>
+          <button type="button" class="status-filter action-filter secondary-filter" (click)="clearFilters()">Reset</button>
+        </div>
+      </form>
+
+      @if (rentalMutationError()) {
+        <p class="page-message page-error">{{ rentalMutationError() }}</p>
+      }
+
+      @if (scooterError()) {
+        <p class="page-message page-error">{{ scooterError() }}</p>
+      }
+
+      @if (scooterLoading() || activeRentalLoading()) {
+        <p class="page-message">Loading ride data...</p>
+      }
+
+      <section class="map-row">
+        <app-scooter-map [markers]="availableMapMarkers()" />
+      </section>
+
+      <section class="scooters-grid">
+        @for (scooter of scooters(); track scooter.id) {
+          <app-browse-scooter-card [scooter]="scooter" (unlock)="unlockScooter($event)" />
+        }
+      </section>
+
+      @if (!scooterLoading() && !scooterError() && scooters().length === 0) {
+        <p class="page-message">No scooters match the current filters.</p>
+      }
+    </div>
+  </section>
+</main>
