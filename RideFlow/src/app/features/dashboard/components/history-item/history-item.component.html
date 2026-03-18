@@ -1,0 +1,59 @@
+<article class="history-item">
+  <div class="left-block">
+    <div class="scooter-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <circle cx="6" cy="17" r="2.1" />
+        <circle cx="17.5" cy="17" r="2.1" />
+        <path d="M8.2 17H12l3.8-6.2h-4.3l-1.4-3.2H8.3" />
+        <path d="M12 10.8 9.6 13.2" />
+      </svg>
+    </div>
+
+    <div class="ride-title">
+      <h4>{{ record.scooterName }}</h4>
+      <p>{{ record.rentalCode }} · {{ record.dateLabel }}</p>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <p>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="8.2" />
+        <path d="M12 7.5V12l3.2 1.8" />
+      </svg>
+      {{ record.durationLabel }}
+    </p>
+    <p>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 20s6-5.7 6-10.1A6 6 0 1 0 6 9.9C6 14.3 12 20 12 20Z" />
+        <circle cx="12" cy="10" r="1.9" />
+      </svg>
+      {{ record.distanceLabel }}
+    </p>
+    <p class="amount">
+      <span>$</span>
+      <strong>{{ record.amountLabel }}</strong>
+    </p>
+  </div>
+
+  <div class="status-wrap">
+    <span class="status-pill" [class.status-refunded]="record.status !== 'completed'">
+      @if (record.status === 'completed') {
+        completed
+      } @else if (record.status === 'force-ended') {
+        force ended
+      } @else {
+        cancelled
+      }
+    </span>
+  </div>
+
+  <button type="button" class="receipt-button" [disabled]="!record.receiptAvailable" (click)="openReceipt()">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 4v10" />
+      <path d="m8 10 4 4 4-4" />
+      <path d="M5 20h14" />
+    </svg>
+    <span>{{ record.receiptAvailable ? 'Receipt' : 'No Receipt' }}</span>
+  </button>
+</article>
