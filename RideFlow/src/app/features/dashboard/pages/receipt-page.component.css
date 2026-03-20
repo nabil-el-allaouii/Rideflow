@@ -1,0 +1,218 @@
+.receipt-layout {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  background: #f4f7f6;
+}
+
+.sidebar {
+  background: #131c20;
+  color: #d6e3ec;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.brand {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 0.72rem;
+  padding: 0.95rem 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.brand-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 22px rgba(46, 196, 171, 0.34);
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1;
+  font-family: var(--rf-font-title);
+  font-weight: 700;
+}
+
+.brand-light { color: #f4f9ff; }
+.brand-accent { color: var(--rf-primary); }
+
+.menu-wrap { padding: 1.4rem 0.9rem 1rem; }
+.menu-title {
+  margin: 0 0 0.7rem 0.25rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  color: #7890a2;
+  font-weight: 700;
+}
+
+.menu-list { display: grid; gap: 0.34rem; }
+.menu-item {
+  width: 100%;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: #e9f0f6;
+  min-height: 48px;
+  padding: 0 0.85rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.96rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu-item-active,
+.menu-item:hover { background: rgba(255, 255, 255, 0.08); }
+
+.menu-list-footer {
+  padding: 0.9rem 0.85rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.topbar {
+  min-height: 74px;
+  padding: 0 1.35rem;
+  border-bottom: 1px solid #d9dfdf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f2f6f5;
+}
+
+.back-button,
+.download-button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 14px;
+  padding: 0 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #1e7d6d;
+  color: #f4fffd;
+}
+
+.back-button { background: #e6efee; color: #28404e; }
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(140deg, #20b39a, #32cbb2);
+  color: #f3fffd;
+  font-family: var(--rf-font-title);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.receipt-content { padding: 1.45rem 1.35rem 1.7rem; }
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hero h2 {
+  margin: 0;
+  font-family: var(--rf-font-title);
+  font-size: 2.4rem;
+  color: #0d1e2c;
+}
+
+.hero p {
+  margin: 0.22rem 0 0;
+  color: #5e7586;
+}
+
+.summary-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.summary-card,
+.panel {
+  border: 1px solid #d8dfdf;
+  border-radius: 18px;
+  background: #f9fbfb;
+  box-shadow: 0 6px 20px rgba(16, 31, 46, 0.06);
+}
+
+.summary-card { padding: 1rem 1.05rem; }
+.summary-card .label {
+  font-size: 0.78rem;
+  color: #5e7586;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.summary-card strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.1rem;
+  color: #112330;
+}
+.summary-card p {
+  margin: 0.2rem 0 0;
+  color: #5e7586;
+  font-size: 0.92rem;
+}
+
+.panel {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+}
+
+.panel h3 {
+  margin: 0 0 0.8rem;
+  font-size: 1.02rem;
+  color: #112330;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #e0e8e7;
+}
+
+.row:last-child { border-bottom: 0; }
+.sub-row {
+  margin-top: -0.35rem;
+  margin-bottom: 0.55rem;
+  color: #5e7586;
+  font-size: 0.9rem;
+}
+
+.total-row strong { color: #0f7c6b; }
+
+.feedback { margin-top: 1rem; color: #4e6577; }
+.feedback-error { color: #c53a3a; }
+
+@media (max-width: 1080px) {
+  .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  .receipt-layout { grid-template-columns: 1fr; }
+  .menu-wrap,
+  .menu-list-footer { display: none; }
+  .hero,
+  .summary-grid { grid-template-columns: 1fr; }
+  .hero { flex-direction: column; align-items: stretch; }
+  .summary-grid { display: grid; }
+}

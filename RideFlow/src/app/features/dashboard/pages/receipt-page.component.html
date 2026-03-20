@@ -1,0 +1,91 @@
+<main class="receipt-layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="/assets/logo.jpg" alt="RideFlow logo" />
+      </div>
+      <h1><span class="brand-light">Ride</span><span class="brand-accent">Flow</span></h1>
+    </div>
+
+    <div class="menu-wrap">
+      <p class="menu-title">{{ isAdmin() ? 'ADMINISTRATION' : 'MENU' }}</p>
+      <nav class="menu-list" aria-label="Receipt navigation">
+        @for (item of mainMenuItems(); track item.label) {
+          <button type="button" class="menu-item" [class.menu-item-active]="item.active" (click)="onMainMenuClick(item)">
+            <span>{{ item.label }}</span>
+          </button>
+        }
+      </nav>
+    </div>
+
+    <nav class="menu-list menu-list-footer" aria-label="Secondary menu">
+      @for (item of footerMenuItems(); track item.label) {
+        <button type="button" class="menu-item" (click)="onFooterMenuClick(item)">
+          <span>{{ item.label }}</span>
+        </button>
+      }
+    </nav>
+  </aside>
+
+  <section class="receipt-main">
+    <header class="topbar">
+      <button type="button" class="back-button" (click)="goBack()">Back</button>
+      <button type="button" class="avatar">{{ initials() }}</button>
+    </header>
+
+    <div class="receipt-content">
+      @if (loading()) {
+        <p class="feedback">Loading receipt...</p>
+      } @else if (error()) {
+        <p class="feedback feedback-error">{{ error() }}</p>
+      } @else if (receipt()) {
+        <section class="hero">
+          <div>
+            <h2>Receipt {{ receipt()!.receiptCode }}</h2>
+            <p>{{ receipt()!.scooterModel }} · {{ receipt()!.scooterCode }}</p>
+          </div>
+          <button type="button" class="download-button" (click)="downloadPdf()">Download PDF</button>
+        </section>
+
+        <section class="summary-grid">
+          <article class="summary-card">
+            <span class="label">Customer</span>
+            <strong>{{ receipt()!.userFullName }}</strong>
+            <p>{{ receipt()!.userEmail }}</p>
+          </article>
+          <article class="summary-card">
+            <span class="label">Duration</span>
+            <strong>{{ receipt()!.durationLabel }}</strong>
+            <p>{{ formatDateTime(receipt()!.startTime) }} → {{ formatDateTime(receipt()!.endTime) }}</p>
+          </article>
+          <article class="summary-card">
+            <span class="label">Battery</span>
+            <strong>{{ receipt()!.batteryAtStart }}% → {{ receipt()!.batteryAtEnd }}%</strong>
+            <p>{{ receipt()!.batteryConsumed }}% consumed</p>
+          </article>
+          <article class="summary-card">
+            <span class="label">Distance</span>
+            <strong>{{ receipt()!.distanceTraveled.toFixed(2) }} km</strong>
+            <p>Generated {{ formatDateTime(receipt()!.generatedAt) }}</p>
+          </article>
+        </section>
+
+        <section class="panel">
+          <h3>Pricing Breakdown</h3>
+          <div class="row"><span>Unlock Fee</span><strong>{{ formatCurrency(receipt()!.unlockFee) }}</strong></div>
+          <div class="row"><span>Usage Cost</span><strong>{{ formatCurrency(receipt()!.usageCost) }}</strong></div>
+          <div class="row"><span>Rate Per Minute</span><strong>{{ formatCurrency(receipt()!.ratePerMinute) }}</strong></div>
+          <div class="row total-row"><span>Total</span><strong>{{ formatCurrency(receipt()!.totalCost) }}</strong></div>
+        </section>
+
+        <section class="panel">
+          <h3>Payments</h3>
+          <div class="row"><span>Unlock Payment</span><strong>{{ receipt()!.unlockPaymentStatus || 'N/A' }}</strong></div>
+          <div class="sub-row">{{ receipt()!.unlockPaymentReference || 'No reference' }}</div>
+          <div class="row"><span>Final Payment</span><strong>{{ receipt()!.finalPaymentStatus || 'N/A' }}</strong></div>
+          <div class="sub-row">{{ receipt()!.finalPaymentReference || receipt()!.finalPaymentFailureReason || 'No reference' }}</div>
+        </section>
+      }
+    </div>
+  </section>
+</main>
