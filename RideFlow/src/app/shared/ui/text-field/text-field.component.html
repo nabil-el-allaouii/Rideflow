@@ -1,0 +1,70 @@
+<div class="field">
+  @if (label) {
+    <label class="field-label" [for]="id">{{ label }}</label>
+  }
+  <div class="field-input" [class.field-input-invalid]="showError">
+    @if (icon === 'email') {
+      <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm0 2v.5l8 4.75 8-4.75V8l-8 4.75L4 8Z"
+        />
+      </svg>
+    }
+
+    @if (icon === 'lock') {
+      <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12 1a5 5 0 0 1 5 5v2h1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3Zm-6 7v10h12V10H6Z"
+        />
+      </svg>
+    }
+
+    @if (icon === 'user') {
+      <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12 3a4.2 4.2 0 1 1 0 8.4A4.2 4.2 0 0 1 12 3Zm0 10c4.1 0 7.4 2.5 7.4 5.7V21h-2v-2.3c0-2-2.4-3.7-5.4-3.7s-5.4 1.7-5.4 3.7V21h-2v-2.3C4.6 15.5 7.9 13 12 13Z"
+        />
+      </svg>
+    }
+
+    <input
+      [id]="id"
+      [type]="resolvedInputType"
+      [formControl]="control"
+      [placeholder]="placeholder"
+      [autocomplete]="autocomplete"
+      [attr.aria-label]="ariaLabel || null"
+    />
+
+    @if (type === 'password') {
+      <button
+        class="visibility-toggle"
+        type="button"
+        [attr.aria-label]="isPasswordVisible ? 'Hide password' : 'Show password'"
+        [attr.aria-pressed]="isPasswordVisible"
+        (click)="togglePasswordVisibility()"
+      >
+        @if (isPasswordVisible) {
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 3 21 21" />
+            <path d="M10.58 10.58a2 2 0 0 0 2.83 2.83" />
+            <path
+              d="M9.88 5.09A11 11 0 0 1 12 5c4.48 0 8.27 2.94 9.54 7a11.02 11.02 0 0 1-4.13 5.41"
+            />
+            <path
+              d="M6.23 6.23A11.02 11.02 0 0 0 2.46 12c1.27 4.06 5.06 7 9.54 7 1.53 0 3-.31 4.36-.91"
+            />
+          </svg>
+        } @else {
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2.46 12C3.73 7.94 7.52 5 12 5s8.27 2.94 9.54 7c-1.27 4.06-5.06 7-9.54 7S3.73 16.06 2.46 12Z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        }
+      </button>
+    }
+  </div>
+  @if (showError && errorMessage) {
+    <p class="field-error">{{ errorMessage }}</p>
+  }
+</div>
