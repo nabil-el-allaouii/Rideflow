@@ -1,0 +1,90 @@
+@import './admin-users-page.component.css';
+
+.primary-action {
+  min-height: 44px;
+  border: 0;
+  border-radius: 12px;
+  padding: 0 1rem;
+  font-family: var(--rf-font-title);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(140deg, #20b39a, #32cbb2);
+  color: #f3fffd;
+}
+
+.table-card {
+  margin-top: 1rem;
+  border: 1px solid #d8dfdf;
+  border-radius: 18px;
+  background: #f9fbfb;
+  box-shadow: 0 6px 20px rgba(16, 31, 46, 0.06);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.95rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e1e8e8;
+}
+
+th {
+  font-size: 0.8rem;
+  color: #5d7384;
+  text-transform: uppercase;
+}
+
+.ride-copy {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.ride-copy strong {
+  color: #152734;
+}
+
+.ride-copy span,
+.muted {
+  color: #5d7384;
+  font-size: 0.92rem;
+}
+
+.receipt-button {
+  min-height: 36px;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 0.85rem;
+  background: #e5f5f1;
+  color: #155749;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.receipt-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.pagination-row {
+  padding: 0.95rem 1rem 1rem;
+  border-top: 1px solid #d8dfdf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pagination-row p {
+  margin: 0;
+  color: #5e7586;
+  font-size: 0.92rem;
+}
