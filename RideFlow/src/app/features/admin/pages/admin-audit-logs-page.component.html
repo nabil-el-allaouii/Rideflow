@@ -1,0 +1,267 @@
+<main class="admin-layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="/assets/logo.jpg" alt="RideFlow logo" />
+      </div>
+      <h1><span class="brand-light">Ride</span><span class="brand-accent">Flow</span></h1>
+    </div>
+
+    <div class="menu-wrap">
+      <p class="menu-title">ADMINISTRATION</p>
+      <nav class="menu-list" aria-label="Admin menu">
+        @for (item of mainMenuItems; track item.label) {
+          <button type="button" class="menu-item" [class.menu-item-active]="item.active" (click)="onMainMenuClick(item)">
+            <span class="menu-icon" aria-hidden="true">
+              @switch (item.icon) {
+                @case ('dashboard') {
+                  <svg viewBox="0 0 24 24"><path d="M4 19h16M7 16V8m5 8V5m5 11v-6" /></svg>
+                }
+                @case ('scooter') {
+                  <svg class="menu-icon-scooter" viewBox="0 0 50 50"><path d="M35 9 A 1.0001 1.0001 0 0 0 34 10C34 10.185417 34.010494 10.176523 34.021484 10.269531C34.032484 10.362541 34.047479 10.480684 34.068359 10.628906C34.110129 10.92535 34.17252 11.338705 34.259766 11.857422C34.415602 12.783946 34.663504 14.095763 34.990234 15.640625L24.220703 28.207031L17.958984 15.681641 A 1.0001 1.0001 0 0 0 17.818359 15.402344L16.123047 12.009766C16.182204 12.007254 16.241501 12 16.300781 12C18.900781 12 20 11.299609 20 10.599609C20 9.9996094 19.499219 9.9996094 18.699219 10.099609L12.300781 10.099609C11.200781 10.099609 11 10.6 11 11.5C11 13.792963 12.355328 13.050886 14.105469 12.449219L15.880859 16L13.552734 20.658203C12.446943 20.237342 11.249801 20 10 20C4.4886661 20 0 24.488666 0 30C0 35.511334 4.4886661 40 10 40C15.174135 40 19.447699 36.044472 19.951172 31L23.992188 31 A 1.0001163 1.0001163 0 0 0 24 31 A 1.0001 1.0001 0 0 0 24.015625 31 A 1.0001163 1.0001163 0 0 0 24.099609 30.994141 A 1.0001 1.0001 0 0 0 24.191406 30.982422 A 1.0001163 1.0001163 0 0 0 24.199219 30.980469 A 1.0001 1.0001 0 0 0 24.289062 30.957031 A 1.0001163 1.0001163 0 0 0 24.294922 30.955078 A 1.0001 1.0001 0 0 0 24.382812 30.923828 A 1.0001163 1.0001163 0 0 0 24.388672 30.921875 A 1.0001 1.0001 0 0 0 24.472656 30.880859 A 1.0001163 1.0001163 0 0 0 24.478516 30.876953 A 1.0001 1.0001 0 0 0 24.558594 30.830078 A 1.0001163 1.0001163 0 0 0 24.560547 30.828125 A 1.0001163 1.0001163 0 0 0 24.564453 30.826172 A 1.0001 1.0001 0 0 0 24.638672 30.769531 A 1.0001163 1.0001163 0 0 0 24.644531 30.765625 A 1.0001 1.0001 0 0 0 24.669922 30.740234 A 1.0001163 1.0001163 0 0 0 24.716797 30.697266 A 1.0001 1.0001 0 0 0 24.742188 30.669922 A 1.0001163 1.0001163 0 0 0 24.759766 30.650391L35.539062 18.074219C35.73611 18.916936 35.958114 19.811381 36.201172 20.755859C32.568222 22.256057 30 25.83388 30 30C30 35.511003 34.488997 40 40 40C45.511003 40 50 35.511003 50 30C50 24.488997 45.511003 20 40 20C39.356537 20 38.72922 20.066717 38.119141 20.183594C37.703188 18.562099 37.333857 17.035071 37.052734 15.738281C36.668675 13.966651 36.40168 12.531708 36.232422 11.525391C36.194545 11.300193 36.178808 11.181048 36.150391 11L37.976562 11C39.026137 11.02538 39.909543 11.079931 40.330078 11.289062C40.750614 11.498197 41 11.714667 41 13 A 1.0001 1.0001 0 1 0 43 13C43 11.285333 42.283168 10.026413 41.220703 9.4980469C40.158239 8.9696804 39.041863 9.0246234 38.023438 9 A 1.0001 1.0001 0 0 0 38 9L35 9 z" /></svg>
+                }
+                @case ('users') {
+                  <svg viewBox="0 0 24 24"><path d="M16.5 19.5a4.7 4.7 0 0 0-9 0" /><circle cx="12" cy="8.2" r="2.9" /><path d="M19.8 19.5a3.4 3.4 0 0 0-2.7-3.3" /><path d="M17 5.7a2.6 2.6 0 0 1 0 5.2" /></svg>
+                }
+                @case ('rentals') {
+                  <svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2" /><path d="M9 8h6M9 12h6M9 16h4" /></svg>
+                }
+                @case ('payments') {
+                  <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path d="M3 10h18" /></svg>
+                }
+                @case ('pricing') {
+                  <svg viewBox="0 0 24 24"><path d="M12 3v18" /><path d="M16.5 6.5c-.9-1-2.2-1.5-4-1.5-2.7 0-4.5 1.4-4.5 3.4S9.5 12 12 12s4 1.2 4 3.1S14.1 19 11.6 19c-1.8 0-3.3-.6-4.6-1.8" /></svg>
+                }
+                @case ('audit') {
+                  <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.4 2.6 8.2 7 10 4.4-1.8 7-5.6 7-10V6l-7-3Z" /><path d="m9.5 12 1.8 1.8 3.3-3.4" /></svg>
+                }
+              }
+            </span>
+            <span>{{ item.label }}</span>
+          </button>
+        }
+      </nav>
+    </div>
+
+    <nav class="menu-list menu-list-footer" aria-label="Admin secondary menu">
+      @for (item of footerMenuItems; track item.label) {
+        <button type="button" class="menu-item" (click)="onFooterMenuClick(item)">
+          <span class="menu-icon" aria-hidden="true">
+            @switch (item.icon) {
+              @case ('customer') {
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8.2" r="3" /><path d="M5.4 19.2c1.3-3 3.8-4.7 6.6-4.7s5.3 1.7 6.6 4.7" /></svg>
+              }
+              @case ('logout') {
+                <svg viewBox="0 0 24 24"><path d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4" /><path d="M13 16 18 12 13 8" /><path d="M9 12h9" /></svg>
+              }
+            }
+          </span>
+          <span>{{ item.label }}</span>
+        </button>
+      }
+    </nav>
+  </aside>
+
+  <section class="admin-main">
+    <header class="topbar">
+      <div></div>
+      <button type="button" class="avatar">{{ initials() }}</button>
+    </header>
+
+    <div class="admin-content">
+      <section class="hero-row">
+        <div class="hero">
+          <h2>Audit Logs</h2>
+          <p>Review critical platform events, actor context, payloads, and operation outcomes.</p>
+        </div>
+      </section>
+
+      <section class="metrics-grid">
+        <article class="metric-card">
+          <p class="metric-value">{{ totalElements() }}</p>
+          <p class="metric-label">Visible Logs</p>
+        </article>
+        <article class="metric-card metric-card-alert">
+          <p class="metric-value">{{ failedCount() }}</p>
+          <p class="metric-label">Failed on Page</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-value">{{ authEventsCount() }}</p>
+          <p class="metric-label">Auth Events</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-value">{{ paymentEventsCount() }}</p>
+          <p class="metric-label">Payment Events</p>
+        </article>
+      </section>
+
+      <section class="search-row">
+        <form class="search-toolbar audit-toolbar" [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+          <label class="search-field search-field-wide">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m16.5 16.5 4 4" /></svg>
+            <input type="text" placeholder="Search actor, payload, IP, user agent..." formControlName="query" />
+          </label>
+
+          <label class="toolbar-select">
+            <span>Action</span>
+            <select formControlName="actionType">
+              <option value="">All</option>
+              @for (action of actionOptions; track action) {
+                <option [value]="action">{{ formatLabel(action) }}</option>
+              }
+            </select>
+          </label>
+
+          <label class="toolbar-select">
+            <span>Entity</span>
+            <select formControlName="entityType">
+              <option value="">All</option>
+              @for (entityType of entityOptions; track entityType) {
+                <option [value]="entityType">{{ formatLabel(entityType) }}</option>
+              }
+            </select>
+          </label>
+
+          <label class="toolbar-select">
+            <span>Status</span>
+            <select formControlName="status">
+              <option value="">All</option>
+              @for (status of statusOptions; track status) {
+                <option [value]="status">{{ formatLabel(status) }}</option>
+              }
+            </select>
+          </label>
+
+          <label class="toolbar-select">
+            <span>From</span>
+            <input type="date" formControlName="fromDate" />
+          </label>
+
+          <label class="toolbar-select">
+            <span>To</span>
+            <input type="date" formControlName="toDate" />
+          </label>
+
+          <div class="toolbar-actions">
+            <button type="submit" class="secondary-action">Apply</button>
+            <button type="button" class="secondary-action" (click)="resetFilters()">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      @if (error()) {
+        <p class="feedback feedback-error">{{ error() }}</p>
+      }
+
+      @if (loading()) {
+        <p class="feedback">Loading audit logs...</p>
+      }
+
+      <section class="content-grid">
+        <section class="table-card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Actor</th>
+                  <th>Action</th>
+                  <th>Entity</th>
+                  <th>Status</th>
+                  <th>Payload</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (log of logs(); track log.id) {
+                  <tr class="table-row" [class.table-row-active]="selectedLog()?.id === log.id" (click)="selectLog(log)">
+                    <td class="muted">{{ formatDateTime(log.createdAt) }}</td>
+                    <td>
+                      <div class="user-copy">
+                        <p class="user-name">{{ actorLabel(log) }}</p>
+                        <p class="user-email">{{ log.actorRole.toLowerCase() }}</p>
+                      </div>
+                    </td>
+                    <td><span class="role-pill">{{ formatLabel(log.actionType) }}</span></td>
+                    <td>
+                      <p class="user-name">{{ formatLabel(log.entityType) }}</p>
+                      <p class="user-email">ID: {{ log.entityId ?? 'N/A' }}</p>
+                    </td>
+                    <td>
+                      <span class="status-pill" [class.status-active]="log.status === 'SUCCESS'" [class.status-disabled]="log.status === 'FAILED'">
+                        {{ formatLabel(log.status) }}
+                      </span>
+                    </td>
+                    <td class="payload-cell">{{ payloadPreview(log.payload) }}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+
+          @if (!loading() && logs().length === 0) {
+            <p class="feedback table-feedback">No audit logs found for the current filters.</p>
+          }
+
+          <div class="pagination-row">
+            <button type="button" class="secondary-action" [disabled]="page() <= 0 || loading()" (click)="goToPreviousPage()">Previous</button>
+            <p>Page {{ page() + 1 }} of {{ totalPages() || 1 }}</p>
+            <button type="button" class="secondary-action" [disabled]="page() + 1 >= totalPages() || loading()" (click)="goToNextPage()">Next</button>
+          </div>
+        </section>
+
+        <aside class="detail-card">
+          <div class="detail-head">
+            <h3>Log Details</h3>
+            <p>Inspect full payload, request metadata, and actor context for the selected event.</p>
+          </div>
+
+          @if (selectedLog()) {
+            <div class="detail-stack">
+              <div class="detail-grid">
+                <div>
+                  <span class="detail-label">Timestamp</span>
+                  <p>{{ formatDateTime(selectedLog()!.createdAt) }}</p>
+                </div>
+                <div>
+                  <span class="detail-label">Status</span>
+                  <p>{{ formatLabel(selectedLog()!.status) }}</p>
+                </div>
+                <div>
+                  <span class="detail-label">Actor</span>
+                  <p>{{ actorLabel(selectedLog()!) }}</p>
+                </div>
+                <div>
+                  <span class="detail-label">Role</span>
+                  <p>{{ formatLabel(selectedLog()!.actorRole) }}</p>
+                </div>
+                <div>
+                  <span class="detail-label">Action</span>
+                  <p>{{ formatLabel(selectedLog()!.actionType) }}</p>
+                </div>
+                <div>
+                  <span class="detail-label">Entity</span>
+                  <p>{{ formatLabel(selectedLog()!.entityType) }} #{{ selectedLog()!.entityId ?? 'N/A' }}</p>
+                </div>
+                <div>
+                  <span class="detail-label">IP Address</span>
+                  <p>{{ selectedLog()!.ipAddress || 'Not captured' }}</p>
+                </div>
+                <div>
+                  <span class="detail-label">User Agent</span>
+                  <p>{{ selectedLog()!.userAgent || 'Not captured' }}</p>
+                </div>
+              </div>
+
+              <div>
+                <span class="detail-label">Payload</span>
+                <pre class="payload-block">{{ selectedLog()!.payload || 'No payload captured.' }}</pre>
+              </div>
+            </div>
+          } @else {
+            <p class="feedback">Select a log entry to inspect the full details.</p>
+          }
+        </aside>
+      </section>
+    </div>
+  </section>
+</main>
