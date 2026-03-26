@@ -1,0 +1,58 @@
+<section class="picker-card">
+  <header class="picker-header">
+    <div>
+      <h4>Pin Scooter Location</h4>
+      <p>Click the map to place the scooter, then drag the pin for precise coordinates.</p>
+    </div>
+    @if (latitude !== null && longitude !== null) {
+      <span class="picker-badge">{{ latitude.toFixed(6) }}, {{ longitude.toFixed(6) }}</span>
+    } @else {
+      <span class="picker-badge picker-badge-muted">No point selected</span>
+    }
+  </header>
+
+  <div class="picker-map" role="img" aria-label="Map for selecting a scooter location">
+    @if (mapTokenMissing) {
+      <div class="picker-fallback">
+        <p>Mapbox token is missing.</p>
+        <small>Set `MAPBOX_ACCESS_TOKEN_VALUE` in `src/app/core/config/mapbox.config.ts`.</small>
+      </div>
+    } @else {
+      <mgl-map
+        class="picker-canvas"
+        [style]="mapStyle"
+        [center]="center"
+        [zoom]="[13]"
+        [cursorStyle]="'crosshair'"
+        (mapClick)="onMapClick($event)"
+      >
+        <mgl-control mglNavigation [showCompass]="false"></mgl-control>
+
+        @if (markerCoords; as coords) {
+          <mgl-marker
+            [lngLat]="coords"
+            [draggable]="true"
+            (markerDragEnd)="onMarkerDragEnd($event)"
+          >
+            <button type="button" class="picker-marker" aria-label="Selected scooter location">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21s6-5.7 6-11a6 6 0 1 0-12 0c0 5.3 6 11 6 11Z" />
+                <circle cx="12" cy="10" r="2.4" />
+              </svg>
+            </button>
+            <mgl-popup [closeButton]="false" [offset]="18">
+              <div class="picker-popup">
+                <strong>Selected scooter point</strong>
+                <small>{{ latitude?.toFixed(6) }}, {{ longitude?.toFixed(6) }}</small>
+              </div>
+            </mgl-popup>
+          </mgl-marker>
+        }
+      </mgl-map>
+    }
+  </div>
+
+  <footer class="picker-footer">
+    <span>Tip: click once to place the scooter, drag the pin to fine-tune.</span>
+  </footer>
+</section>
