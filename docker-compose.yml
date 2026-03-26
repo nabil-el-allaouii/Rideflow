@@ -1,0 +1,49 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: rideflow-mysql
+    environment:
+      MYSQL_DATABASE: rideflow_db
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  backend:
+    build:
+      context: ./RideFlow-Backend
+      dockerfile: Dockerfile
+    container_name: rideflow-backend
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/rideflow_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      JWT_SECRET: rideflow-docker-secret-change-me-please-rideflow-2026
+      APP_SECURITY_ALLOWED_ORIGINS: http://localhost:4200,http://127.0.0.1:4200
+      BOOTSTRAP_ADMIN_EMAIL: admin@rideflow.local
+      BOOTSTRAP_ADMIN_PASSWORD: Admin1234
+      BOOTSTRAP_ADMIN_FULL_NAME: RideFlow Administrator
+      BOOTSTRAP_ADMIN_PHONE_NUMBER: "+212600000000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./RideFlow
+      dockerfile: Dockerfile
+    container_name: rideflow-frontend
+    depends_on:
+      - backend
+    ports:
+      - "4200:80"
+
+volumes:
+  mysql-data:
