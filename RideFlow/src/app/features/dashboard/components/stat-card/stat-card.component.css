@@ -1,0 +1,53 @@
+.stat-card {
+  min-height: 112px;
+  border: 1px solid #d8dfdf;
+  border-radius: 14px;
+  background: #f9fbfb;
+  box-shadow: 0 6px 20px rgba(16, 31, 46, 0.06);
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.stat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: #dfeceb;
+  display: inline-grid;
+  place-items: center;
+  color: #21b59b;
+  flex-shrink: 0;
+}
+
+.stat-icon svg {
+  width: 1.24rem;
+  height: 1.24rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stat-copy h4 {
+  margin: 0;
+  font-family: var(--rf-font-title);
+  font-size: 1.95rem;
+  line-height: 1;
+  color: #0f1f2e;
+}
+
+.stat-label {
+  margin: 0.12rem 0 0;
+  color: #5d7383;
+  font-size: 0.86rem;
+}
+
+.stat-helper {
+  margin: 0.1rem 0 0;
+  color: #19ad90;
+  font-weight: 600;
+  font-size: 0.84rem;
+}
