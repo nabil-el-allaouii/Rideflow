@@ -1,38 +1,78 @@
 .login-page {
   min-height: 100dvh;
   display: grid;
-  grid-template-columns: minmax(340px, 1fr) minmax(500px, 1fr);
+  grid-template-columns: minmax(380px, 1.2fr) minmax(420px, 1fr);
+  position: relative;
+  overflow: hidden;
 }
 
 .brand-column {
   min-height: 100dvh;
+  position: relative;
 }
 
 .form-column {
   display: grid;
   align-content: center;
   justify-items: center;
-  padding: clamp(1.4rem, 2.5vw, 2.8rem);
-  background: linear-gradient(160deg, #f6f8f8 0%, #edf1f1 100%);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  position: relative;
+  background: linear-gradient(145deg, #f0f4f6 0%, #e8edf0 50%, #f5f8fa 100%);
+}
+
+.form-column::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(0, 210, 168, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.form-column::after {
+  content: "";
+  position: absolute;
+  bottom: -30%;
+  left: -20%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(0, 184, 148, 0.06) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 app-login-form {
-  width: min(34rem, 92%);
+  width: min(38rem, 92%);
   justify-self: center;
+  position: relative;
+  z-index: 1;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1024px) {
   .login-page {
     grid-template-columns: 1fr;
-    grid-template-rows: 36dvh 1fr;
+    grid-template-rows: 1fr;
   }
 
   .brand-column {
-    min-height: 0;
+    display: none;
   }
 
   .form-column {
-    align-content: start;
-    padding-top: 2.2rem;
+    min-height: 100dvh;
+    align-content: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-column {
+    padding: 1.5rem;
+  }
+
+  app-login-form {
+    width: 100%;
   }
 }

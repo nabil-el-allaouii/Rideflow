@@ -12,7 +12,13 @@ FROM eclipse-temurin:17-jre-alpine
 
 WORKDIR /app
 
+RUN addgroup -S rideflow && adduser -S rideflow -G rideflow
+
 COPY --from=build /app/target/*.war /app/app.war
+
+RUN chown -R rideflow:rideflow /app
+
+USER rideflow
 
 EXPOSE 8080
 

@@ -1,29 +1,46 @@
 .stat-card {
-  min-height: 112px;
-  border: 1px solid #d8dfdf;
-  border-radius: 14px;
-  background: #f9fbfb;
-  box-shadow: 0 6px 20px rgba(16, 31, 46, 0.06);
-  padding: 0.85rem 1rem;
+  min-height: 116px;
+  border: 1px solid rgba(220, 225, 228, 0.6);
+  border-radius: var(--rf-radius-lg);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--rf-shadow-sm);
+  padding: 1rem 1.1rem;
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 1rem;
+  transition:
+    transform var(--rf-transition-fast),
+    box-shadow var(--rf-transition-fast),
+    border-color var(--rf-transition-fast);
+  cursor: default;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--rf-shadow-md);
+  border-color: rgba(0, 210, 168, 0.2);
 }
 
 .stat-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 13px;
-  background: #dfeceb;
+  width: 50px;
+  height: 50px;
+  border-radius: var(--rf-radius-md);
+  background: linear-gradient(135deg, rgba(0, 210, 168, 0.12), rgba(0, 184, 148, 0.08));
   display: inline-grid;
   place-items: center;
-  color: #21b59b;
+  color: var(--rf-primary);
   flex-shrink: 0;
+  transition: transform var(--rf-transition-fast);
+}
+
+.stat-card:hover .stat-icon {
+  transform: scale(1.08);
 }
 
 .stat-icon svg {
-  width: 1.24rem;
-  height: 1.24rem;
+  width: 1.3rem;
+  height: 1.3rem;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
@@ -31,23 +48,31 @@
   stroke-linejoin: round;
 }
 
+.stat-copy {
+  flex: 1;
+  min-width: 0;
+}
+
 .stat-copy h4 {
   margin: 0;
   font-family: var(--rf-font-title);
-  font-size: 1.95rem;
+  font-size: 1.85rem;
   line-height: 1;
-  color: #0f1f2e;
+  font-weight: 700;
+  color: var(--rf-ink);
+  letter-spacing: -0.02em;
 }
 
 .stat-label {
-  margin: 0.12rem 0 0;
-  color: #5d7383;
-  font-size: 0.86rem;
+  margin: 0.15rem 0 0;
+  color: var(--rf-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .stat-helper {
-  margin: 0.1rem 0 0;
-  color: #19ad90;
+  margin: 0.12rem 0 0;
+  color: var(--rf-primary-strong);
   font-weight: 600;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
 }

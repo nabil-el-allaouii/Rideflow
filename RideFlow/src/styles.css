@@ -1,29 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
-
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import "mapbox-gl/dist/mapbox-gl.css";
 @import "tailwindcss";
 
 :root {
-  --rf-surface: #f3f5f4;
-  --rf-ink: #0f1f2e;
+  --rf-surface: #f8fafb;
+  --rf-ink: #0a1016;
   --rf-muted: #6b7e8e;
-  --rf-primary: #2ec4ab;
-  --rf-primary-strong: #20b39a;
-  --rf-border: #d6dddf;
-  --rf-danger: #c43838;
+  --rf-primary: #00d2a8;
+  --rf-primary-strong: #00b894;
+  --rf-primary-glow: rgba(0, 210, 168, 0.25);
+  --rf-border: rgba(200, 210, 215, 0.6);
+  --rf-danger: #e05353;
+  --rf-warning: #f0a030;
   --rf-font-title: "Space Grotesk", system-ui, sans-serif;
-  --rf-font-text: Manrope, "Space Grotesk", system-ui, sans-serif;
+  --rf-font-text: "Manrope", "Space Grotesk", system-ui, sans-serif;
+
+  --rf-shadow-sm: 0 2px 8px rgba(10, 16, 22, 0.04), 0 1px 2px rgba(10, 16, 22, 0.06);
+  --rf-shadow-md: 0 4px 16px rgba(10, 16, 22, 0.06), 0 2px 4px rgba(10, 16, 22, 0.04);
+  --rf-shadow-lg: 0 8px 32px rgba(10, 16, 22, 0.08), 0 4px 8px rgba(10, 16, 22, 0.04);
+  --rf-shadow-glow: 0 8px 32px rgba(0, 210, 168, 0.15);
+
+  --rf-radius-sm: 10px;
+  --rf-radius-md: 14px;
+  --rf-radius-lg: 20px;
+  --rf-radius-xl: 28px;
+
+  --rf-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --rf-transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --rf-transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-html,
-body {
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
   margin: 0;
   width: 100%;
   min-height: 100%;
@@ -33,13 +48,78 @@ body {
   font-family: var(--rf-font-text);
   color: var(--rf-ink);
   background: var(--rf-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
-button,
-input {
+button, input {
   font: inherit;
+}
+
+::selection {
+  background: var(--rf-primary);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 120, 130, 0.25);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 120, 130, 0.4);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(12px) rotate(-2deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
