@@ -14,6 +14,8 @@ WORKDIR /app
 
 RUN addgroup -S rideflow && adduser -S rideflow -G rideflow
 
+RUN mkdir -p /app/data && chown -R rideflow:rideflow /app
+
 COPY --from=build /app/target/*.war /app/app.war
 
 RUN chown -R rideflow:rideflow /app
